@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sylhet Tuition Media — Trusted Home Tutors in Sylhet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2430;
+    --ink-soft:#2A3444;
+    --cream:#F6F3EC;
+    --cream-dark:#EAE4D6;
+    --teal:#1F6B5C;
+    --teal-dark:#17564A;
+    --gold:#C8963E;
+    --slate:#5A6472;
+    --white:#FDFCF9;
+    --line: rgba(27,36,48,0.12);
+    --line-light: rgba(253,252,249,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Work Sans', sans-serif; color:var(--ink); background:var(--white); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; line-height:1.1;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 40px;}
+  @media (max-width:640px){ .wrap{padding:0 24px;} }
+
+  header{position:sticky; top:0; z-index:50; background:rgba(253,252,249,0.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); transition:box-shadow .3s ease, border-color .3s ease;}
+  header.scrolled{box-shadow:0 8px 24px -16px rgba(27,36,48,0.25); border-bottom-color:transparent;}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; position:relative; gap:20px;}
+  .logo{font-family:'Fraunces', serif; font-weight:600; font-size:1.2rem; display:flex; align-items:center; gap:10px; z-index:2;}
+  .logo .mark{width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg, var(--teal), #2E8C77); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;}
+  .nav-links{display:flex; align-items:center; gap:30px; font-size:0.93rem;}
+  .nav-links a{opacity:0.75; transition:opacity .15s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-right{display:flex; align-items:center; gap:18px; z-index:2;}
+  .nav-cta{background:var(--teal); color:var(--white); padding:10px 18px; font-size:0.88rem; font-weight:500; border-radius:3px; white-space:nowrap; transition:background .2s ease, transform .2s ease;}
+  .nav-cta:hover{background:var(--teal-dark); transform:translateY(-1px);}
+
+  .menu-toggle{display:none; flex-direction:column; justify-content:center; gap:5px; width:30px; height:30px; background:none; border:none; cursor:pointer; padding:0; margin-left:4px; z-index:2;}
+  .menu-toggle span{display:block; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:transform .3s ease, opacity .3s ease;}
+  .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle.active span:nth-child(2){opacity:0;}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:860px){
+    .menu-toggle{display:flex;}
+    .nav-links{
+      position:fixed; top:0; left:0; right:0;
+      flex-direction:column; align-items:stretch; gap:0;
+      background:var(--white);
+      padding:88px 28px 28px;
+      transform:translateY(-12px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .28s ease, transform .28s ease, visibility .28s;
+      box-shadow:0 20px 40px -20px rgba(27,36,48,0.2);
+    }
+    .nav-links.open{
+      opacity:1; transform:translateY(0); visibility:visible; pointer-events:auto;
+    }
+    .nav-links a{padding:14px 0; border-bottom:1px solid var(--line); font-size:1.02rem; opacity:1;}
+    .nav-cta{display:none;}
+  }
+
+  .hero{position:relative; background:var(--cream); overflow:hidden; padding:70px 0 0;}
+  .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;}
+  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} }
+  .hero-badge{display:inline-flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--line); padding:7px 14px; border-radius:20px; font-size:0.82rem; font-weight:600; color:var(--teal); margin-bottom:22px;}
+  .hero-badge .dot{width:6px; height:6px; background:var(--gold); border-radius:50%;}
+  .hero h1{font-size:clamp(2.2rem, 4.6vw, 3.3rem); margin-bottom:20px;}
+  .hero h1 em{font-style:normal; color:var(--teal);}
+  .hero p.lead{font-size:1.06rem; color:var(--slate); max-width:460px; margin-bottom:30px;}
+  .btn-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
+  .btn{padding:14px 24px; font-size:0.94rem; font-weight:600; border-radius:3px; display:inline-block; border:1px solid transparent;}
+  .btn-primary{background:var(--teal); color:var(--white);}
+  .btn-primary:hover{background:var(--teal-dark);}
+  .btn-outline{border-color:var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--white);}
+
+  .hero-visual{position:relative; aspect-ratio:1/1; max-width:420px; margin:0 auto;}
+  .hero-visual svg{width:100%; height:100%;}
+
+  .stat-strip{border-top:1px solid var(--line); padding:20px 0;}
+  .stat-strip .wrap{display:flex; flex-wrap:wrap; gap:14px 40px; font-size:0.88rem; color:var(--slate);}
+  .stat-strip span{display:flex; align-items:center; gap:9px;}
+  .stat-strip .dot{width:5px; height:5px; background:var(--gold); border-radius:50%; flex-shrink:0;}
+
+  section{padding:84px 0;}
+  @media (max-width:640px){ section{padding:56px 0;} }
+  .section-head{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:48px; align-items:end;}
+  @media (max-width:760px){ .section-head{grid-template-columns:1fr; gap:14px;} }
+  .section-head h2{font-size:clamp(1.7rem, 3.2vw, 2.3rem);}
+  .section-head p{color:var(--slate); font-size:1rem;}
+  .kicker{font-size:0.84rem; font-weight:600; color:var(--teal); margin-bottom:10px; letter-spacing:0.02em; text-transform:uppercase;}
+
+  /* dual path */
+  .paths{background:var(--white);}
+  .path-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:760px){ .path-grid{grid-template-columns:1fr;} }
+  .path-card{background:var(--white); padding:44px 38px;}
+  .path-card.alt{background:var(--ink); color:var(--white);}
+  .path-card .path-tag{font-size:0.8rem; font-weight:600; color:var(--teal); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.03em;}
+  .path-card.alt .path-tag{color:var(--gold);}
+  .path-card h3{font-size:1.5rem; margin-bottom:14px;}
+  .path-card p{color:var(--slate); margin-bottom:22px; font-size:0.97rem;}
+  .path-card.alt p{color:rgba(253,252,249,0.72);}
+  .path-card ul{list-style:none; margin-bottom:26px;}
+  .path-card li{padding:8px 0; border-top:1px solid var(--line); font-size:0.92rem;}
+  .path-card.alt li{border-top:1px solid var(--line-light);}
+  .path-card li:last-child{border-bottom:1px solid var(--line);}
+  .path-card.alt li:last-child{border-bottom:1px solid var(--line-light);}
+
+  /* why choose */
+  .why{background:var(--cream);}
+  .why-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:860px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  .why-item{background:var(--white); padding:30px 26px;}
+  .why-item .n{font-family:'Fraunces', serif; font-size:1.6rem; color:var(--gold); font-weight:600; margin-bottom:10px;}
+  .why-item h3{font-size:1.02rem; margin-bottom:8px;}
+  .why-item p{font-size:0.88rem; color:var(--slate);}
+
+  /* subjects */
+  .subjects{background:var(--white);}
+  .subject-row{display:grid; grid-template-columns:40px 1fr; gap:20px; align-items:start; padding:24px 0; border-top:1px solid var(--line);}
+  .subject-list .subject-row:last-child{border-bottom:1px solid var(--line);}
+  .subject-row .ic{font-family:'Fraunces', serif; color:var(--teal); font-weight:600; font-size:1.1rem;}
+  .subject-row h3{font-size:1.1rem; margin-bottom:5px;}
+  .subject-row p{color:var(--slate); font-size:0.92rem;}
+
+  /* colorful gallery */
+  .gallery{background:var(--cream-dark);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;}
+  @media (max-width:860px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  .gallery-card{
+    border-radius:14px;
+    aspect-ratio:3/4;
+    position:relative;
+    overflow:hidden;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:20px;
+    box-shadow:0 18px 32px -20px rgba(27,36,48,0.35);
+    transition:transform .3s ease;
+  }
+  .gallery-card:hover{transform:translateY(-6px);}
+  .gallery-card svg{position:absolute; inset:0; width:100%; height:100%;}
+  .gallery-card .label{position:relative; z-index:2; color:var(--white); font-weight:600; font-size:1rem;}
+  .gallery-card .sub{position:relative; z-index:2; color:rgba(255,255,255,0.85); font-size:0.8rem; margin-top:3px;}
+  .gc-1{background:linear-gradient(155deg, #E8724C, #C8963E);}
+  .gc-2{background:linear-gradient(155deg, #1F6B5C, #2E8C77);}
+  .gc-3{background:linear-gradient(155deg, #3E6FB0, #6AA7D9);}
+  .gc-4{background:linear-gradient(155deg, #B0528C, #D98EB0);}
+
+  /* inquiry form */
+  .inquiry{background:var(--ink); color:var(--white);}
+  .inquiry-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:760px){ .inquiry-grid{grid-template-columns:1fr; gap:36px;} }
+  .inquiry-info h2{font-size:clamp(1.7rem,3.2vw,2.2rem); margin-bottom:14px;}
+  .inquiry-info p{color:rgba(253,252,249,0.68); margin-bottom:26px; max-width:420px;}
+  .wa-btn{display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#fff; padding:14px 22px; border-radius:3px; font-weight:600; font-size:0.95rem;}
+  .contact-line{padding:14px 0; border-top:1px solid var(--line-light); font-size:0.92rem; color:rgba(253,252,249,0.75);}
+  .contact-line:last-child{border-bottom:1px solid var(--line-light);}
+  .contact-line b{color:var(--white);}
+
+  form{display:flex; flex-direction:column; gap:13px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:0.83rem; color:rgba(253,252,249,0.7);}
+  .field input, .field select{border:1px solid var(--line-light); background:rgba(253,252,249,0.06); padding:12px 13px; font-family:inherit; font-size:0.93rem; border-radius:3px; color:var(--white);}
+  .field select option{color:var(--ink);}
+  .field input::placeholder{color:rgba(253,252,249,0.4);}
+  .field input:focus, .field select:focus{outline:2px solid var(--gold); outline-offset:1px;}
+  .submit-btn{background:var(--gold); color:var(--ink); padding:14px 22px; border:none; font-family:inherit; font-size:0.94rem; font-weight:700; border-radius:3px; cursor:pointer; margin-top:4px;}
+  .submit-btn:hover{opacity:0.9;}
+
+  /* coverage */
+  .coverage{background:var(--cream); text-align:center;}
+  .coverage h2{font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:14px;}
+  .coverage p{color:var(--slate); max-width:520px; margin:0 auto;}
+
+  footer{background:var(--ink); color:rgba(253,252,249,0.6); padding:36px 0;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:0.85rem;}
+  footer .logo{color:var(--white); font-size:1.05rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <div class="logo">
+      <span class="mark">S</span>
+      Sylhet Tuition Media
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#subjects">Subjects</a>
+      <a href="#paths">Find / Apply</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#coverage">Areas</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Get Started</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-badge"><span class="dot"></span>No.1 Trusted Home Tuition Service in Sylhet</div>
+      <h1>Find the right tutor,<br><em>without the guesswork.</em></h1>
+      <p class="lead">Sylhet Tuition Media connects parents and students with qualified, verified tutors across Sylhet City — fast, safe, and simple.</p>
+      <div class="btn-row">
+        <a href="#paths" class="btn btn-primary">Find a Tutor</a>
+        <a href="#paths" class="btn btn-outline">Apply as Tutor</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="170" stroke="#1F6B5C" stroke-width="1.5" opacity="0.25"/>
+        <circle cx="200" cy="200" r="120" stroke="#C8963E" stroke-width="1.5" opacity="0.3"/>
+        <circle cx="130" cy="150" r="34" fill="#1F6B5C" opacity="0.9"/>
+        <circle cx="270" cy="150" r="26" fill="#C8963E" opacity="0.85"/>
+        <circle cx="200" cy="270" r="30" fill="#1B2430" opacity="0.85"/>
+        <line x1="130" y1="150" x2="200" y2="270" stroke="#1F6B5C" stroke-width="1.5" opacity="0.4"/>
+        <line x1="270" y1="150" x2="200" y2="270" stroke="#C8963E" stroke-width="1.5" opacity="0.4"/>
+        <line x1="130" y1="150" x2="270" y2="150" stroke="#1B2430" stroke-width="1.5" opacity="0.25"/>
+      </svg>
+    </div>
+  </div>
+  <div class="stat-strip">
+    <div class="wrap">
+      <span><span class="dot"></span>Fast matching within 24 hours</span>
+      <span><span class="dot"></span>Experienced &amp; verified tutors</span>
+      <span><span class="dot"></span>Affordable tuition fees</span>
+    </div>
+  </div>
+</section>
+
+<section class="paths" id="paths">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Two ways to connect</div>
+        <h2>Whether you need a tutor, or want to teach.</h2>
+      </div>
+      <p>We match carefully on both sides — parents get verified tutors, tutors get genuine opportunities.</p>
+    </div>
+    <div class="path-grid">
+      <div class="path-card">
+        <div class="path-tag">For Parents &amp; Students</div>
+        <h3>Find a Home Tutor</h3>
+        <p>Qualified tutors for every level, matched to your subject and schedule.</p>
+        <ul>
+          <li>English &amp; Bangla Medium — Class 1 to HSC</li>
+          <li>University Admission Preparation</li>
+          <li>IELTS / Spoken English</li>
+          <li>Special Care Students</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Request a Tutor</a>
+      </div>
+      <div class="path-card alt">
+        <div class="path-tag">For Tutors</div>
+        <h3>Tuition Jobs in Sylhet</h3>
+        <p>Join our network and get matched with verified students and parents.</p>
+        <ul>
+          <li>Daily tuition job updates</li>
+          <li>High-paying opportunities</li>
+          <li>Verified students &amp; parents</li>
+          <li>Flexible areas across Sylhet City</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="border-color:#fff; color:#fff;">Apply as a Tutor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Why families choose us</div>
+        <h2>Built on trust, not just listings.</h2>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="n">01</div><h3>Trusted Provider</h3><p>A known name for home tuition across Sylhet City.</p></div>
+      <div class="why-item"><div class="n">02</div><h3>Fast Matching</h3><p>Connected with a suitable tutor within 24 hours.</p></div>
+      <div class="why-item"><div class="n">03</div><h3>Verified Tutors</h3><p>Every tutor is screened before being recommended.</p></div>
+      <div class="why-item"><div class="n">04</div><h3>Affordable Fees</h3><p>Tuition rates that work for local families.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="subjects" id="subjects">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">What we cover</div>
+        <h2>Subjects &amp; programs.</h2>
+      </div>
+      <p>From early classes to admission prep — one place for every stage.</p>
+    </div>
+    <div class="subject-list">
+      <div class="subject-row"><div class="ic">01</div><div><h3>English &amp; Bangla Medium</h3><p>Class 1 through HSC, all major subjects covered.</p></div></div>
+      <div class="subject-row"><div class="ic">02</div><div><h3>University Admission Preparation</h3><p>Focused guidance for admission test success.</p></div></div>
+      <div class="subject-row"><div class="ic">03</div><div><h3>IELTS / Spoken English</h3><p>Practical, test-focused and conversational coaching.</p></div></div>
+      <div class="subject-row"><div class="ic">04</div><div><h3>Special Care Students</h3><p>Patient, tailored support where it's needed most.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">A glimpse of learning</div>
+        <h2>Every subject, every stage.</h2>
+      </div>
+      <p>From first storybooks to exam halls — our tutors meet students where they are.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card gc-1">
+        <svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <rect x="40" y="150" width="120" height="14" rx="2" fill="#fff" opacity="0.18"/>
+          <rect x="48" y="130" width="104" height="14" rx="2" fill="#fff" opacity="0.25"/>
+          <rect x="56" y="110" width="88" height="14" rx="2" fill="#fff" opacity="0.32"/>
+          <circle cx="100" cy="70" r="26" fill="#fff" opacity="0.2"/>
+        </svg>
+        <div class="label">Reading &amp; Basics</div>
+        <div class="sub">Class 1–5, English &amp; Bangla</div>
+      </div>
+      <div class="gallery-card gc-2">
+        <svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 190 L100 150 L160 190" stroke="#fff" stroke-width="3" opacity="0.3" fill="none"/>
+          <circle cx="100" cy="110" r="36" fill="#fff" opacity="0.15"/>
+          <path d="M70 230 Q100 200 130 230" stroke="#fff" stroke-width="3" opacity="0.25" fill="none"/>
+        </svg>
+        <div class="label">Science &amp; Exam Prep</div>
+        <div class="sub">Class 6–HSC, All subjects</div>
+      </div>
+      <div class="gallery-card gc-3">
+        <svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="150" r="54" fill="#fff" opacity="0.12"/>
+          <path d="M60 150 Q100 120 140 150 Q100 180 60 150Z" stroke="#fff" stroke-width="2.5" opacity="0.3" fill="none"/>
+          <circle cx="100" cy="150" r="8" fill="#fff" opacity="0.3"/>
+        </svg>
+        <div class="label">IELTS &amp; Spoken English</div>
+        <div class="sub">Confident, test-ready skills</div>
+      </div>
+      <div class="gallery-card gc-4">
+        <svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 140 L100 115 L140 140 L100 165 Z" fill="#fff" opacity="0.22"/>
+          <line x1="140" y1="140" x2="140" y2="175" stroke="#fff" stroke-width="2.5" opacity="0.3"/>
+          <circle cx="140" cy="180" r="4" fill="#fff" opacity="0.4"/>
+        </svg>
+        <div class="label">Admission &amp; Success</div>
+        <div class="sub">University-ready preparation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inquiry" id="contact">
+  <div class="wrap inquiry-grid">
+    <div class="inquiry-info">
+      <div class="kicker" style="color:var(--gold);">Get in touch</div>
+      <h2>Ready to get matched?</h2>
+      <p>Message us on WhatsApp for the fastest response, or fill out the form.</p>
+      <a href="#" class="wa-btn">WhatsApp: 01828-570067</a>
+      <div style="margin-top:28px;">
+        <div class="contact-line"><b>Coverage:</b> Sylhet City (All Areas)</div>
+        <div class="contact-line"><b>Response time:</b> Within 24 hours</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('This is a demo form — connected when the site goes live.');">
+      <div class="field">
+        <label for="role">I am a...</label>
+        <select id="role">
+          <option>Parent / Student looking for a tutor</option>
+          <option>Tutor looking for tuition jobs</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone / WhatsApp</label>
+        <input id="phone" type="tel" placeholder="01XXX-XXXXXX" required>
+      </div>
+      <div class="field">
+        <label for="subj">Subject / Class or Area</label>
+        <input id="subj" type="text" placeholder="e.g. Class 9 Math, Zindabazar area">
+      </div>
+      <button class="submit-btn" type="submit">Send Request</button>
+    </form>
+  </div>
+</section>
+
+<section class="coverage" id="coverage">
+  <div class="wrap">
+    <h2>Serving all of Sylhet City</h2>
+    <p>From Zindabazar to Shahjalal Upashahar — wherever you are in Sylhet, we can match you with a nearby tutor.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Sylhet Tuition Media</div>
+    <div>© 2026 Sylhet Tuition Media. Demo site — not yet live.</div>
+  </div>
+</footer>
+
+
+<script>
+  const header = document.querySelector('header');
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
